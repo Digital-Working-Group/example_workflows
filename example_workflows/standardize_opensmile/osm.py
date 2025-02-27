@@ -13,11 +13,13 @@ def extract_osm_features(audio_fn, csv_out, feat_level='lld'):
     Writes the features to a CSV
 
     """
-    assert feat_level in {'lld', 'functionals'}, feat_level
+    assert feat_level in {'lld', 'functionals', 'deltas'}, feat_level
     if feat_level == 'lld':
         feature_level = opensmile.FeatureLevel.LowLevelDescriptors
     elif feat_level == 'functionals':
         feature_level = opensmile.FeatureLevel.Functionals
+    elif feat_level == 'deltas':
+        feature_level = opensmile.FeatureLevel.LowLevelDescriptors_Deltas
 
     smile = opensmile.Smile(
         feature_set=opensmile.FeatureSet.ComParE_2016,
